@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header style="position: relative; background: var(--bg-glass);">
+        <div class="container">
+            <div class="logo">Dev<span>Admin</span></div>
+            <nav>
+                <ul>
+                    <li><a href="/">На Головну</a></li>
+                </ul>
+                <a href="/admin/messages" class="btn" style="background: #2ecc71; margin-bottom: 20px; display:inline-block;">
+    <i class="fas fa-envelope"></i> Переглянути повідомлення
+</a>
+            </nav>
+        </div>
+    </header>
+
+    <section style="padding-top: 50px;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Додати Проєкт</h2>
+            </div>
+
+            <form action="/add_project" method="POST" class="contact-form" style="max-width: 800px;">
+                
+                <label>Назва проєкту:</label>
+                <input type="text" name="title" placeholder="Наприклад: Super Bot" required>
+
+                <label>Короткий опис (для картки):</label>
+                <input type="text" name="description" placeholder="Чат-бот на Python..." required>
+
+                <label>Категорія:</label>
+                <select name="category" style="width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 10px; border: 1px solid #ccc;">
+                    <option value="python">Python</option>
+                    <option value="sql">SQL / Data</option>
+                    <option value="math">Math / Algorithms</option>
+                </select>
+
+                <label>Клас іконки (FontAwesome):</label>
+                <input type="text" name="image_icon" placeholder="fas fa-robot" value="fas fa-code" required>
+                <small style="display:block; margin-bottom: 15px; color: #666;">Шукати іконки тут: <a href="https://fontawesome.com/search?o=r&m=free" target="_blank">FontAwesome</a></small>
+
+                <label>Колір фону:</label>
+                <select name="image_class" style="width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 10px; border: 1px solid #ccc;">
+                    <option value="img-1">Червоний/Рожевий (img-1)</option>
+                    <option value="img-2">Синій (img-2)</option>
+                    <option value="img-3">Зелений (img-3)</option>
+                </select>
+
+                <label>Детальний опис (для модального вікна):</label>
+                <textarea name="modal_text" rows="5" placeholder="Деталі про технології..." required></textarea>
+
+                <label style="color: red; font-weight: bold;">Секретний ключ (Пароль):</label>
+                <input type="password" name="password" placeholder="Введіть пароль для збереження" required>
+
+                <button type="submit" class="btn" style="width: 100%;">Зберегти проєкт</button>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>
