@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Вхідні повідомлення</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Додаткові стилі для таблиці */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; border-radius: 10px; overflow: hidden; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: var(--primary); color: white; }
+        tr:hover { background-color: #f1f1f1; }
+        .sort-links a { margin-right: 15px; text-decoration: none; font-weight: bold; color: var(--primary); }
+        .sort-links a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body style="background: #f4f7f6; color: #333;">
+
+    <div class="container" style="padding: 40px 0;">
+        <h1>📬 Вхідні повідомлення</h1>
+        
+        <div style="margin: 20px 0; display: flex; justify-content: space-between;">
+            <div class="sort-links">
+                Сортувати: 
+                <a href="/admin/messages?sort=new">Спочатку нові</a> | 
+                <a href="/admin/messages?sort=old">Спочатку старі</a>
+            </div>
+            <a href="/admin" class="btn" style="padding: 10px 20px;">← Назад в Адмінку</a>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Дата</th>
+                    <th>Ім'я</th>
+                    <th>Email</th>
+                    <th style="width: 40%;">Повідомлення</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for msg in messages %}
+                <tr>
+                    <td>{{ msg.id }}</td>
+                    <td>{{ msg.created_at }}</td>
+                    <td style="font-weight: bold;">{{ msg.name }}</td>
+                    <td><a href="mailto:{{ msg.email }}">{{ msg.email }}</a></td>
+                    <td>{{ msg.message }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

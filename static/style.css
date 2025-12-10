@@ -334,3 +334,31 @@ footer { text-align: center; padding: 40px; color: var(--text-light); font-size:
 .close-modal:hover {
     color: var(--primary);
 }
+
+.portfolio-grid {
+    display: grid;
+    /* Це налаштування тримає мінімум 300px ширини, але розтягує на всю ширину */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 30px;
+    align-items: stretch; /* Розтягує картки по висоті */
+}
+
+.portfolio-item {
+    display: flex;       /* Робимо саму картку гнучкою */
+    flex-direction: column; 
+    justify-content: space-between; /* Рівномірно розподіляє контент */
+    background: var(--bg-glass);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease; /* Плавніша анімація */
+}
+
+/* Класи для фільтрації - ВАЖЛИВО */
+.portfolio-item.hide {
+    display: none; /* Повністю прибирає елемент з потоку */
+}
+.portfolio-item.show {
+    display: flex; /* Повертає element (важливо щоб був flex, як вище) */
+    animation: fadeIn 0.5s ease;
+}

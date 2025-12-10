@@ -6,7 +6,7 @@
     <title>Portfolio | Creative Dev</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
@@ -137,9 +137,6 @@
                 <button class="filter-btn hover-target" data-filter="math">Math</button>
             </div>
             <div class="portfolio-grid reveal">
-                <div class="portfolio-item tilt-card" data-category="python" onclick="openModal('modal1')">
-                    <div class="portfolio-img img-1"><i class="fas fa-qrcode"></i></div>
-                    <div class="portfolio-info"><h3>QR Generator</h3><div class="tags"><span>Python</span></div></div>
                 </div>
                 <div class="portfolio-item tilt-card" data-category="sql" onclick="openModal('modal2')">
                     <div class="portfolio-img img-2"><i class="fas fa-database"></i></div>
@@ -158,21 +155,18 @@
             <div class="section-title reveal">
                 <h2>Зв'язатись з нами</h2>
             </div>
-            <form action="https://formspree.io/f/mqkvojzv" method="POST" class="contact-form reveal">
-                <input type="text" name="name" placeholder="Ваше ім'я" required class="hover-target">
-                <input type="email" name="email" placeholder="Ваш Email" required class="hover-target">
-                <textarea name="message" rows="5" placeholder="Опишіть задачу" required class="hover-target"></textarea>
-                <button type="submit" class="btn hover-target" style="width: 100%;">Надіслати</button>
-            </form>
+            <form action="/send_message" method="POST" class="contact-form reveal">
+    <input type="text" name="name" placeholder="Ваше ім'я" required class="hover-target">
+    <input type="email" name="email" placeholder="Ваш Email" required class="hover-target">
+    <textarea name="message" rows="5" placeholder="Опишіть задачу" required class="hover-target"></textarea>
+    <button type="submit" class="btn hover-target" style="width: 100%;">Надіслати</button>
+</form>
         </div>
     </section>
 
     <footer><p>&copy; <span id="year"></span> DevStudio.</p></footer>
 
-    <div id="modal1" class="modal" onclick="closeModal('modal1')"><div class="modal-content" onclick="event.stopPropagation()"><span class="close-modal" onclick="closeModal('modal1')">&times;</span><h2>QR Code Generator</h2><p class="modal-text">Десктопний додаток.</p></div></div>
-    <div id="modal2" class="modal" onclick="closeModal('modal2')"><div class="modal-content" onclick="event.stopPropagation()"><span class="close-modal" onclick="closeModal('modal2')">&times;</span><h2>DB Schema</h2><p class="modal-text">Проєктування БД.</p></div></div>
-    <div id="modal3" class="modal" onclick="closeModal('modal3')"><div class="modal-content" onclick="event.stopPropagation()"><span class="close-modal" onclick="closeModal('modal3')">&times;</span><h2>Simplex Method</h2><p class="modal-text">Оптимізація.</p></div></div>
-
-    <script src="script.js"></script>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
